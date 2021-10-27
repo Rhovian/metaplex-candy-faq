@@ -61,4 +61,7 @@ this [repo](https://github.com/0xEnrico/arweave-nft-uploader) is a python utilit
 You can set the date 100 years in the future and forget about it
 
 ### Whats a good hosting plan?
-Netlify or Vercel is recommended.
+Netlify, Vercel, or CloudFlare Pages prop plan are recommended.
+
+### If I don't run update_candy_machine with a specific time, is it possible to mint at all?
+If there is no set start date, only the owner will be able to operate the candy machine.
