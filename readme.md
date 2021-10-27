@@ -16,6 +16,12 @@ This [site](https://feecalc.live/) Calculates the arweave upload (only arweave?)
 ## Arweave direct uploads
 this [repo](https://github.com/0xEnrico/arweave-nft-uploader) is a python utility that helps lower the cost of uploads.
 
+## Arweave direct upload fee calculator
+[link](https://jcx2olqdzwgm.arweave.net/71giX-OY-3LwXtfr44B2dDyzW8mPHEAKA-q0wGT0aRM)
+
+## General things to consider before your mint
+Great general [resource](https://medium.com/@elysianft/lets-put-an-end-to-bad-drops-on-solana-c8cfd6d33e69)
+
 # FAQ
 
 ### If I only have one creator address do I need to include shares?
@@ -50,3 +56,9 @@ Set the ``REACT_APP_SOLANA_RPC_HOST`` environment variable to your Quicknode URL
 
 ### How can I use Arweave directly to cut costs of upload?
 this [repo](https://github.com/0xEnrico/arweave-nft-uploader) is a python utility that helps lower the cost of uploads.
+
+### There is any command in update candy machine to pause the mint?
+You can set the date 100 years in the future and forget about it
+
+### Whats a good hosting plan?
+Netlify or Vercel is recommended.
