@@ -1,6 +1,9 @@
 # Resources
 These are resources I've found in the discord that provide extra functionality beyond what the Metaplex repo offers
 
+## Full Metaplex FAQ
+check this [resource](https://hackmd.io/@archaeopteryx/By4bpbA4F#CM-Upload-Costs) out before anything. Odds are, the answers you seek are there.
+
 ## Exiled Apes
 This [repo](https://github.com/exiled-apes/candy-machine-mint) should be used after candy machine creation as this does not work without several environment variables set.
 
