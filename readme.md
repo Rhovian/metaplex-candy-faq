@@ -4,7 +4,7 @@ These are resources I've found in the discord that provide extra functionality b
 ## Exiled Apes
 This [repo](https://github.com/exiled-apes/candy-machine-mint) should be used after candy machine creation as this does not work without several environment variables set.
 
-## Airdrop TOol
+## Airdrop Tool
 This [repo](https://github.com/h4rkl/Ghetto-SolAir) is useful for airdropping presale NFT's.
 
 ## Metaplex Fee Calculator
