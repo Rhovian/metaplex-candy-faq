@@ -65,3 +65,6 @@ Netlify, Vercel, or CloudFlare Pages prop plan are recommended.
 
 ### If I don't run update_candy_machine with a specific time, is it possible to mint at all?
 If there is no set start date, only the owner will be able to operate the candy machine.
+
+### Does file size matter as far as upload costs?
+No. The minimum file size is 25KB and the max is 10MB.
