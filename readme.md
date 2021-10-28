@@ -68,3 +68,6 @@ If there is no set start date, only the owner will be able to operate the candy 
 
 ### Does file size matter as far as upload costs?
 No. The minimum file size is 25KB and the max is 10MB.
+
+### can you close the config account once the launch is over and redeem the leftover rent?
+No, you can only tweak the rent beforehand.
