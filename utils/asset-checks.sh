@@ -5,7 +5,8 @@ echo "Counting all metadata files..."
 find assets -type f -name '*.json' | wc -l
 echo "Counting all image files..."
 find assets -type f -name '*.png' | wc -l
-echo "Skipping name check, this one must be done manually..."
+echo "Name check sends all of the names to out.txt file..."
+find assets -type f -name '*.json' |  xargs jq -r '.name' | sort | less > out.txt
 echo "Checking Symbol values..."
 find assets -type f -name '*.json' |  xargs jq -r '.symbol' | sort | uniq -c
 echo "this command flattens, then counts the unique properties.creators values in your metadata."
