@@ -81,9 +81,9 @@ Checking Symbol values...
  477 $SOUL
 this command flattens, then counts the unique properties.creators values in your metadata.
 for most projects, you should see a consistent count across all parties (address-[1..3])
- 477 ["DwjDLigBek8kDGV2namNLykS28HH2BFVBJq4eq4Ku5ZW",34]
- 477 ["FAhEKFwmXfnKREamf8UQpcei27aiwQaSTUrr2HEFqHnG",33]
- 477 ["oV8fHskb7HgyWFfN59PTHncD6hLa6NDMqQznkFgDYFd",33]
+ 477 [<"wallet">,34]
+ 477 ["wallet",33]
+ 477 ["wallet",33]
 this command extends the prior command by extracting the shares & summing them up.
 you should expect this to output 100...
 100
