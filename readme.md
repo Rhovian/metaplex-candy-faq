@@ -92,7 +92,7 @@ for most projects you should see a consistent count across all metadata...
  477 750
 ```
 
-Also check the ``out.txt`` file to verify that the names of your NFT's look correct.
+Also check the ``out.txt`` in the utils folder file to verify that the names of your NFT's look correct.
 
 # FAQ
 
