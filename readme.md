@@ -82,8 +82,8 @@ Checking Symbol values...
 this command flattens, then counts the unique properties.creators values in your metadata.
 for most projects, you should see a consistent count across all parties (address-[1..3])
  477 [<"wallet">,34]
- 477 ["wallet",33]
- 477 ["wallet",33]
+ 477 [<"wallet">,33]
+ 477 [<"wallet">,33]
 this command extends the prior command by extracting the shares & summing them up.
 you should expect this to output 100...
 100
