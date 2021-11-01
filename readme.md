@@ -189,6 +189,9 @@ Options:
 
 ``ts-node candy-machine-cli.ts update_candy_machine -k ~/.config/solana/devnet.json -d "31 Oct 2021 00:16:30 CDT" -p 0.1``
 
+**command with non default arguments**
+
+``ts-node candy-machine-cli.ts update_candy_machine -k ~/.config/solana/devnet.json -d "01 Nov 2021 00:20:00 CDT" -p 0.1 -c <art dir> -r <custom rpc>``
 ```
 # reference
 ts-node candy-machine-cli.ts update_candy_machine -h
