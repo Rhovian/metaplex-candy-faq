@@ -13,7 +13,7 @@ This [repo](https://github.com/h4rkl/Ghetto-SolAir) is useful for airdropping pr
 ## Metaplex Fee Calculator
 This [site](https://feecalc.live/) Calculates the arweave upload (only arweave?) and candymachine config cost.
 
-## Arweave direct uploads
+## ~~Arweave direct uploads~~ This should no longer be necessary as of Oct 31st 2021. 
 this [repo](https://github.com/0xEnrico/arweave-nft-uploader) is a python utility that helps lower the cost of uploads.
 
 ## Arweave direct upload fee calculator
