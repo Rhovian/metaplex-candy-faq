@@ -137,9 +137,29 @@ Verify that the upload was successful
 
 ``ts-node candy-machine-cli.ts verify -k ~/.config/solana/devnet.json``
 
+**command with non default arguments**
+
+``ts-node candy-machine-cli.ts verify -k ~/.config/solana/devnet.json -c presale-1 -r https://wandering-frosty-bird.solana-devnet.quiknode.pro/d6bda74cef4e53df4895f53632df1b7a008854ae/``
+
+```
+# reference
+Usage: candy-machine-cli verify [options]
+
+Options:
+  -e, --env <string>         Solana cluster env name (default: "devnet")
+  -k, --keypair <path>       Solana wallet location (default: "--keypair not provided")
+  -l, --log-level <string>   log level
+  -c, --cache-name <string>  Cache file name (default: "temp")
+  -r, --rpc-url <string>     custom rpc url since this is a heavy command
+  -h, --help                 display help for command
+```
+
 5. Create your candy machine
 
 ``ts-node candy-machine-cli create_candy_machine -k ~/.config/solana/devnet.json -p 0.1 -s <treasury public key>``
+
+**command with non default arguments**
+``ts-node candy-machine-cli create_candy_machine -k ~/.config/solana/devnet.json -p <price> -s <treasury address> -c <asset dir name> -r <custom rpc>``
 
 ```
 # reference
