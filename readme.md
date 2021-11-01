@@ -129,6 +129,10 @@ Run the following command assuming your assets are in the cli ``src`` folder and
 
 ``ts-node candy-machine-cli.ts upload assets -k ~/.config/solana/devnet.json -n <# of assets>``
 
+**command with non default arguments**
+
+``ts-node candy-machine-cli.ts upload <asset folder> -k ~/.config/solana/devnet.json -c <cache file name> -n <# of assets> -r <custom url>``
+
 Verify that the upload was successful
 
 ``ts-node candy-machine-cli.ts verify -k ~/.config/solana/devnet.json``
@@ -184,6 +188,22 @@ Options:
 
 At this point you have all you need to add your candy machine config to your frontend.
 
+## Minting out a candy machine from the CLI
+There is currently no way to do this other than to call the ``mint_one_token`` command from the metaplex cli.
+
+``ts-node candy-machine-cli.ts mint_one_token -k ~/.config/solana/devnet.json``
+```
+Usage: candy-machine-cli mint_one_token [options]
+
+Options:
+  -e, --env <string>         Solana cluster env name (default: "devnet")
+  -k, --keypair <path>       Solana wallet location (default: "--keypair not
+                             provided")
+  -l, --log-level <string>   log level
+  -c, --cache-name <string>  Cache file name (default: "temp")
+  -r, --rpc-url <string>     custom rpc url since this is a heavy command
+  -h, --help                 display help for command
+```
 
 # FAQ
 
