@@ -228,6 +228,25 @@ Options:
   -h, --help                 display help for command
 ```
 
+## Sign metadata (optional)
+A lot of marketplaces required verified (signed) metadata in order to list.
+
+``ts-node andy-machine-cli.ts sign_all -k ~/.config/solana/devnet.json -c <asset dir> -r <custom rpc>``
+
+```
+Usage: candy-machine-cli sign_all [options]
+
+Options:
+  -e, --env <string>         Solana cluster env name (default: "devnet")
+  -k, --keypair <path>       Solana wallet location (default: "--keypair not provided")
+  -l, --log-level <string>   log level
+  -c, --cache-name <string>  Cache file name (default: "temp")
+  -b, --batch-size <string>  Batch size (default: "10")
+  -d, --daemon               Run signing continuously (default: false)
+  -r, --rpc-url <string>     custom rpc url since this is a heavy command
+  -h, --help                 display help for command
+```
+
 # FAQ
 
 ### If I only have one creator address do I need to include shares?
