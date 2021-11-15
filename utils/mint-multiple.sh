@@ -1,6 +1,6 @@
 #!/bin/sh
-max=300
+max=1
 for (( i=0; i < $max; ++i ))
 do
-    ts-node ~/code/metaplex/js/packages/cli/src/candy-machine-cli.ts mint_one_token -k ~/.config/solana/devnet.json -c presale -r https://wandering-frosty-bird.solana-devnet.quiknode.pro/d6bda74cef4e53df4895f53632df1b7a008854ae/
+    ts-node ~/code/metaplex/js/packages/cli/src/candy-machine-cli.ts mint_one_token -e mainnet -k ~/.config/solana/mainnet.json -c presale_1 -r https://icy-snowy-field.solana-mainnet.quiknode.pro/2b6ac6a3f8926dac99cebce3a42afdc65e60f6dc/
 done

@@ -7,22 +7,24 @@ check this [resource](https://hackmd.io/@archaeopteryx/By4bpbA4F#CM-Upload-Costs
 ## Exiled Apes
 This [repo](https://github.com/exiled-apes/candy-machine-mint) should be used after candy machine creation as this does not work without several environment variables set.
 
+## Vue version of Exiled Apes
+This [repo](https://github.com/Mjavala/vue-candymachine-mint) is a vue implementation of the frontend repo above.
+
 ## Airdrop Tool
 This [repo](https://github.com/h4rkl/Ghetto-SolAir) is useful for airdropping presale NFT's.
 
 ## Metaplex Fee Calculator
 This [site](https://feecalc.live/) Calculates the arweave upload (only arweave?) and candymachine config cost.
 
-## ~~Arweave direct uploads~~ This should no longer be necessary as of Oct 31st 2021. 
-this [repo](https://github.com/0xEnrico/arweave-nft-uploader) is a python utility that helps lower the cost of uploads.
-
 ## Arweave direct upload fee calculator
 [link](https://jcx2olqdzwgm.arweave.net/71giX-OY-3LwXtfr44B2dDyzW8mPHEAKA-q0wGT0aRM)
+
+**Note: Fees are constantly changing**
 
 ## General things to consider before your mint
 Great general [resource](https://medium.com/@elysianft/lets-put-an-end-to-bad-drops-on-solana-c8cfd6d33e69)
 
-## Devnet Run Step-by-Step
+## CM Run Step-by-Step (mainnet & devnet commands)
 In this section I am documenting my process (Oct 31st, 2021) on a full devnet run from asset uploads to minting on a website. Updates will be added when I go to use tools to lower costs, move to mainnet, etc.
 
 Note that this assumes you already have the Solana CLI Tools installed, have set your config to devnet and have a keypair already generated at ``~/.config/solana/devnet.json``
@@ -94,6 +96,8 @@ for most projects you should see a consistent count across all metadata...
 
 Also check the ``out.txt`` in the utils folder file to verify that the names of your NFT's look correct.
 
+Note permissions on the outfile
+
 4. Upload
 The cli arguments as of Oct 31st 2021 look like this
 ```
@@ -133,6 +137,11 @@ Run the following command assuming your assets are in the cli ``src`` folder and
 
 ``ts-node candy-machine-cli.ts upload <asset folder> -k ~/.config/solana/devnet.json -c <cache file name> -n <# of assets> -r <custom url>``
 
+**mainnet command**
+
+``ts-node candy-machine-cli.ts upload main -e mainnet -k ~/.config/solana/mainnet.json -c main -n 7000 -r <rpc url>``
+
+
 Verify that the upload was successful
 
 ``ts-node candy-machine-cli.ts verify -k ~/.config/solana/devnet.json``
@@ -140,6 +149,10 @@ Verify that the upload was successful
 **command with non default arguments**
 
 ``ts-node candy-machine-cli.ts verify -k ~/.config/solana/devnet.json -c presale-1 -r https://wandering-frosty-bird.solana-devnet.quiknode.pro/d6bda74cef4e53df4895f53632df1b7a008854ae/``
+
+**mainnet command**
+
+``ts-node candy-machine-cli.ts verify -e mainnet -k ~/.config/solana/mainnet.json -c main -r <custom rpc>``
 
 ```
 # reference
@@ -156,11 +169,14 @@ Options:
 
 5. Create your candy machine
 
-``ts-node candy-machine-cli create_candy_machine -k ~/.config/solana/devnet.json -p 0.1 -s <treasury public key>``
+``ts-node candy-machine-cli.ts create_candy_machine -k ~/.config/solana/devnet.json -p 0.1 -s <treasury public key>``
 
 **command with non default arguments**
-``ts-node candy-machine-cli create_candy_machine -k ~/.config/solana/devnet.json -p <price> -s <treasury address> -c <asset dir name> -r <custom rpc>``
+``ts-node candy-machine-cli.ts create_candy_machine -k ~/.config/solana/devnet.json -p <price> -s <treasury address> -c <asset dir name> -r <custom rpc>``
 
+**mainnet command**
+
+``ts-node candy-machine-cli.ts create_candy_machine -e mainnet -k ~/.config/solana/mainnet.json -p 2 -s G8Rkqbhdt7p4DxyHfMCAZSEEqJT58vgkAABkesrGA5ki -c main -r <custom rpc>``
 ```
 # reference
 Usage: candy-machine-cli create_candy_machine [options]
@@ -215,6 +231,11 @@ At this point you have all you need to add your candy machine config to your fro
 There is currently no way to do this other than to call the ``mint_one_token`` command from the metaplex cli.
 
 ``ts-node candy-machine-cli.ts mint_one_token -k ~/.config/solana/devnet.json``
+
+**mainnet command**
+
+``ts-node candy-machine-cli.ts mint_one_token -e mainnet -k ~/.config/solana/mainnet.json -c main -r <rpc url>``
+
 ```
 Usage: candy-machine-cli mint_one_token [options]
 
@@ -231,7 +252,11 @@ Options:
 ## Sign metadata (optional)
 A lot of marketplaces required verified (signed) metadata in order to list.
 
-``ts-node andy-machine-cli.ts sign_all -k ~/.config/solana/devnet.json -c <asset dir> -r <custom rpc>``
+``ts-node candy-machine-cli.ts sign_all -k ~/.config/solana/devnet.json -c <asset dir> -r <custom rpc>``
+
+**mainnet command**
+
+``ts-node candy-machine-cli.ts sign_all -e mainnet -k ~/.config/solana/mainnet.json -c presale_2 -r <custom rpc>``
 
 ```
 Usage: candy-machine-cli sign_all [options]
@@ -246,6 +271,36 @@ Options:
   -r, --rpc-url <string>     custom rpc url since this is a heavy command
   -h, --help                 display help for command
 ```
+
+## Mainnet Issues
+
+When minting a **large** collection on mainnet (in my case, 7000). I had a lot of issues with the verify command. It turns out that the command itself has issues flagging assets that have not been properly stored on arweave.
+
+How do you find out which ones? People are working on it. For now, there is a script (credit: @KartikSoneji) in the utils folder that will show the total number of NFT's and any problematic config lines.
+
+In order to use this, input your candymachine id to line 127.
+
+Also, verify may fail with an error like this:
+
+```
+(node:32222) UnhandledPromiseRejectionWarning: FetchError: request to https://a34exdhjbmda2mdm6p5s32j73hllyvspk4iyxpf6gpv5ygxm6stq.arweave.net/BvhLjOkLBg0wbPP7Lek_2da8Vk9XEYu8vjPr3Brs9Kc failed, reason: getaddrinfo ENOTFOUND a34exdhjbmda2mdm6p5s32j73hllyvspk4iyxpf6gpv5ygxm6stq.arweave.net
+    at ClientRequest.<anonymous> (/Users/elo/Code/metaplex/js/node_modules/node-fetch/lib/index.js:1461:11)
+    at ClientRequest.emit (events.js:400:28)
+    at ClientRequest.emit (domain.js:470:12)
+    at TLSSocket.socketErrorListener (_http_client.js:475:9)
+    at TLSSocket.emit (events.js:400:28)
+    at TLSSocket.emit (domain.js:470:12)
+    at emitErrorNT (internal/streams/destroy.js:106:8)
+    at emitErrorCloseNT (internal/streams/destroy.js:74:3)
+    at processTicksAndRejections (internal/process/task_queues.js:82:21)
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:32222) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
+(node:32222) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+```
+
+**this is not an issue with your cm**
+
+the best thing do would be to verify the uri yourself and retry. if it happens with various different assets and all of the uri's work when you go to them manually, you should still be good to go live.
 
 # FAQ
 
@@ -296,3 +351,6 @@ No. The minimum file size is 25KB and the max is 10MB.
 
 ### can you close the config account once the launch is over and redeem the leftover rent?
 No, you can only tweak the rent beforehand.
+
+### After uploading and running verify, I get this error: not all NFTs checked out. check out logs above for details; How do I fix this?
+First look in your cache for any ``"onChain:false"``occurrances. You should have some. If so, re run your upload command (for free). After this, you should have none set to ``false``. Then run verify again.
