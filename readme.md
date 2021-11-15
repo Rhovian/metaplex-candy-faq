@@ -310,6 +310,15 @@ Yes, set the shares of your single creator address to 100.
 ### If I do 2 candy machines, will they be signed as 1 collection tho?
 They will have to be signed separately, but will be under the same collection if you put the same collection in the metadata. 
 
+### How do I get a snapshot of all the holders of my NFT collection?
+
+Try these tools:
+
+- https://sol-nft.tools/
+- https://tools.abstratica.art/
+- https://github.com/halaprix/getHolderSnapshot
+- https://github.com/samuelvanderwaal/metaboss
+
 ### Which QuickNode Plan is robust for 10K Launch (with traffic around 10-15K users online during launch) ?
 (Quicknode Pro Plan)[https://www.quicknode.com/pricing] if you expect to sell out.
 
