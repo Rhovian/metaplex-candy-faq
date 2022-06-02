@@ -1,3 +1,7 @@
+# ! DEPRECATED !
+Metaplex has done a lot of work over the past year or so to make the developer experience more friendly with candymachine V2.
+Everything you need is [here](https://docs.metaplex.com/candy-machine-v2/introduction)
+
 # Resources
 These are resources I've found in the discord that provide extra functionality beyond what the Metaplex repo offers
 
